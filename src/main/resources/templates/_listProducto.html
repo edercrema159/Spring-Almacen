@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Index Prueba</title>
+</head>
+
+<body>
+	<h2>Litado de Productoes</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Descripcion</th>
+				<th>IdProductoCategoria</th>
+				<th>Cantidad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="producto:${listaProducto}">
+				<td th:text="${producto.idProducto}"></td>
+				<td th:text="${producto.descripcion}"></td>
+				<td th:text="${producto.idProductoCategoria}"></td>
+				<td th:text="${producto.cantidad}"></td>
+				<td>
+					<a th:href="@{/producto/borrar/{idProducto}(idProducto=${producto.idProducto})}">Borrar</a>
+				</td>
+				<td>
+					<a th:href="@{/producto/editar/{idProducto}(idProducto=${producto.idProducto})}">Editar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>
