@@ -17,7 +17,7 @@ public class ProductoDao implements IProductoDao {
 
 	@Override
 	public List<Producto> listar() {
-		String sql = "SELECT * FROM producto WHERE estado=1";
+		String sql = "SELECT p.*, pc.descripcion as categoria FROM producto p LEFT JOIN productocategoria pc on pc.idProductoCategoria=p.idProductoCategoria WHERE p.estado=1";
 		List<Producto> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(Producto.class));
 		return lista;
 	}

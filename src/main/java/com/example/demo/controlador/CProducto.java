@@ -46,6 +46,9 @@ public class CProducto {
 	public String editar(@PathVariable int idProducto, Model modelo) {
 		Producto producto = dao.buscarID(idProducto);
 		modelo.addAttribute("producto", producto);
+
+		List<Producto> listaCategoria = dao.listarCategoria();
+		modelo.addAttribute("listaProductoCategoria", listaCategoria);
 		return "editarProducto";
 	}
 

@@ -4,8 +4,8 @@ public class Producto {
 	private int idProducto;
 	private String descripcion;
 	private int idProductoCategoria;
+	private String categoria;
 	private int estado;
-	// private String proveedor; La columna proveedor no debe ir en la BDs
 	private Number cantidad;
 
 	public int getIdProducto() {
@@ -32,6 +32,14 @@ public class Producto {
 		this.idProductoCategoria = idProductoCategoria;
 	}
 
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
 	public int getEstado() {
 		return estado;
 	}
@@ -51,11 +59,12 @@ public class Producto {
 	public Producto() {
 	}
 
-	public Producto(int idProducto, String descripcion, int idProductoCategoria, int estado, Number cantidad) {
+	public Producto(int idProducto, String descripcion, int idProductoCategoria, int estado, Number cantidad, String categoria) {
 		this.idProducto = idProducto;
 		this.descripcion = descripcion;
 		this.idProductoCategoria = idProductoCategoria;
 		this.estado = estado;
 		this.cantidad = cantidad;
+		this.categoria = categoria;
 	}
 }
