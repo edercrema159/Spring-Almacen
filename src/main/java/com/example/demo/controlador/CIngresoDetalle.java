@@ -22,8 +22,8 @@ public class CIngresoDetalle {
 	@GetMapping("/ingresodetalle")
 	public String listar(Model modelo) {
 		List<IngresoDetalle> lista = dao.listar();
-		modelo.addAttribute("listaingresodetalle", lista);
-		return "listingresodetalle";
+		modelo.addAttribute("listaIngresoDetalle", lista);
+		return "listEntrada";
 	}
 
 	@GetMapping("/ingresodetalle/nuevo")

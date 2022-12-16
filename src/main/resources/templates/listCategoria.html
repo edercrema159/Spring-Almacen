@@ -5,7 +5,7 @@
 <head>
 
 	<meta charset="utf-8" />
-	<title>L&R Operadores - Registro</title>
+	<title>L&R Operadores - Registro Categoria</title>
 	<link rel="shortcut icon" href="../assets/images/favicon.ico">
 
 	<script src="../assets/js/layout.js"></script>
@@ -131,13 +131,17 @@
 										<li class="nav-item" role="presentation">
 											<a class="nav-link fs-14 active" data-bs-toggle="tab" href="#activities" role="tab">
 												<i class="ri-list-unordered d-inline-block d-md-none"></i> <span
-													class="d-none d-md-inline-block">Productos</span>
+													class="d-none d-md-inline-block">Categoria</span>
 											</a>
 										</li>
 									</ul>
 									<div class="flex-shrink-0">
 										<a href="nuevo" class="btn btn-info"><i class="ri-add-fill align-bottom"></i>
 											Nuevo</a>
+									</div>
+									<div class="flex-shrink-0">
+										<a th:href="@{/productocategoria/(format=pdf)}" target="_blank" class="btn btn-warning"><i class="ri-add-fill align-bottom"></i>
+											Reporte</a>
 									</div>
 								</div>
 								<div class="tab-content pt-4 text-muted">
@@ -150,23 +154,19 @@
 														<tr>
 															<th scope="col">ID</th>
 															<th scope="col">Descripción</th>
-															<th scope="col">Categoria</th>
-															<th scope="col">Cantidad</th>
 															<th scope="col">Opciones</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr th:each="producto:${listaProducto}">
-															<td th:text="${producto.idProducto}"></td>
-															<td th:text="${producto.descripcion}"></td>
-															<td th:text="${producto.categoria}"></td>
-															<td th:text="${producto.cantidad}"></td>
+														<tr th:each="productocategoria:${listaProductoCategoria}">
+															<td th:text="${productocategoria.idProductoCategoria}"></td>
+															<td th:text="${productocategoria.descripcion}"></td>
 															<td>
 																<div class="hstack gap-3 fs-15">
-																	<a th:href="@{/producto/editar/{idProducto}(idProducto=${producto.idProducto})}"
+																	<a th:href="@{/productocategoria/editar/{idProductoCategoria}(idProductoCategoria=${productocategoria.idProductoCategoria})}"
 																		class="link-primary"><i class="ri-settings-4-line"></i></a>
 
-																	<a th:href="@{/producto/borrar/{idProducto}(idProducto=${producto.idProducto})}"class="link-danger"><i
+																	<a th:href="@{/productocategoria/borrar/{idProductoCategoria}(idProductoCategoria=${productocategoria.idProductoCategoria})}"class="link-danger"><i
 																		class="ri-delete-bin-5-line"></i></a>
 																</div>
 															</td>

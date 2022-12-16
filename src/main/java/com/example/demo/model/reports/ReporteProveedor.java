@@ -34,7 +34,7 @@ public class ReporteProveedor extends AbstractPdfView {
     document.open();
     
     /* TITULO */
-    Paragraph titulo = new Paragraph("Reporte de Proveedores :v", FontFactory.getFont("Arial ", 16, Font.BOLD));
+    Paragraph titulo = new Paragraph("Reporte de Proveedores", FontFactory.getFont("Arial ", 16, Font.BOLD));
     titulo.setAlignment(Paragraph.ALIGN_CENTER);
     document.add(titulo);
     document.add(new Paragraph("\n"));

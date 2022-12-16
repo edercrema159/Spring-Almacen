@@ -5,7 +5,7 @@
 <head>
 
 	<meta charset="utf-8" />
-	<title>L&R Operadores - Registro</title>
+	<title>L&R Operadores - Registro Salida</title>
 	<link rel="shortcut icon" href="../assets/images/favicon.ico">
 
 	<script src="../assets/js/layout.js"></script>
@@ -131,7 +131,7 @@
 										<li class="nav-item" role="presentation">
 											<a class="nav-link fs-14 active" data-bs-toggle="tab" href="#activities" role="tab">
 												<i class="ri-list-unordered d-inline-block d-md-none"></i> <span
-													class="d-none d-md-inline-block">Productos</span>
+													class="d-none d-md-inline-block">Salida</span>
 											</a>
 										</li>
 									</ul>
@@ -148,25 +148,35 @@
 												<table class="table table-borderless table-nowrap">
 													<thead>
 														<tr>
-															<th scope="col">ID</th>
-															<th scope="col">Descripción</th>
-															<th scope="col">Categoria</th>
+															<th scope="col">ID Salida</th>
+															<th scope="col">Documento</th>
+															<th scope="col">Proveedor</th>
+															<th scope="col">Fecha</th>
+															<th scope="col">Almacen</th>
+															<th scope="col">Id SalDet</th>
+															<th scope="col">Producto</th>
 															<th scope="col">Cantidad</th>
+															<th scope="col">Costo</th>
 															<th scope="col">Opciones</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr th:each="producto:${listaProducto}">
-															<td th:text="${producto.idProducto}"></td>
-															<td th:text="${producto.descripcion}"></td>
-															<td th:text="${producto.categoria}"></td>
-															<td th:text="${producto.cantidad}"></td>
+														<tr th:each="salida:${listaSalidaDetalle}">
+															<td th:text="${salida.idSalida}"></td>
+															<td th:text="${salida.documento}"></td>
+															<td th:text="${salida.proveedor}"></td>
+															<td th:text="${salida.fecha}"></td>
+															<td th:text="${salida.almacen}"></td>
+															<td th:text="${salida.idSalidaDetalle}"></td>
+															<td th:text="${salida.producto}"></td>
+															<td th:text="${salida.cantidad}"></td>
+															<td th:text="${salida.costo}"></td>
 															<td>
 																<div class="hstack gap-3 fs-15">
-																	<a th:href="@{/producto/editar/{idProducto}(idProducto=${producto.idProducto})}"
+																	<a th:href="@{/salida/editar/{idSalida}(idSalida=${salida.idSalida})}"
 																		class="link-primary"><i class="ri-settings-4-line"></i></a>
 
-																	<a th:href="@{/producto/borrar/{idProducto}(idProducto=${producto.idProducto})}"class="link-danger"><i
+																	<a th:href="@{/salida/borrar/{idSalida}(idSalida=${salida.idSalida})}"class="link-danger"><i
 																		class="ri-delete-bin-5-line"></i></a>
 																</div>
 															</td>

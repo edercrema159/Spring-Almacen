@@ -23,7 +23,7 @@ public class CProductoCategoria {
 	public String listar(Model modelo) {
 		List<ProductoCategoria> lista = dao.listar();
 		modelo.addAttribute("listaProductoCategoria", lista);
-		return "listProductoCategoria";
+		return "listCategoria";
 	}
 
 	@GetMapping("/productocategoria/nuevo")

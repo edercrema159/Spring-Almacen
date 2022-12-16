@@ -23,7 +23,7 @@ public class CSalidaDetalle {
 	public String listar(Model modelo) {
 		List<SalidaDetalle> lista = dao.listar();
 		modelo.addAttribute("listaSalidaDetalle", lista);
-		return "listSalidaDetalle";
+		return "listSalida";
 	}
 
 	@GetMapping("/salidadetalle/nuevo")

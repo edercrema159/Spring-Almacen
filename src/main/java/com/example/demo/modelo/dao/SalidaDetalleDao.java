@@ -17,7 +17,13 @@ public class SalidaDetalleDao implements ISalidaDetalleDao {
 
 	@Override
 	public List<SalidaDetalle> listar() {
-		String sql = "SELECT * FROM salidadetalle WHERE estado=1";
+		String sql = "SELECT sd.*, s.documento, s.fecha, p.razonSocial as proveedor, a.descripcion as almacen, pr.descripcion as producto "+
+		"FROM salidadetalle sd "+
+		"LEFT JOIN salida s ON s.idSalida = sd.idSalida "+
+		"LEFT JOIN proveedor p ON p.idProveedor=s.idProveedor "+
+		"LEFT JOIN almacen a ON a.idAlmacen=s.idAlmacen "+
+		"LEFT JOIN producto pr ON pr.idProducto=sd.idProducto "+
+		"WHERE sd.estado=1 order by sd.idSalida, sd.idSalidaDetalle";
 		List<SalidaDetalle> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(SalidaDetalle.class));
 		return lista;
 	}
