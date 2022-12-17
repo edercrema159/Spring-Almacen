@@ -31,7 +31,7 @@ public class CUsuario {
 		modelo.addAttribute("listaUsuario", lista);
 		return "listUsuario";
 	}
-
+	
 	@GetMapping("/usuario/nuevo")
 	public String nuevo(Model modelo) {
 		Usuario usuario = new Usuario();

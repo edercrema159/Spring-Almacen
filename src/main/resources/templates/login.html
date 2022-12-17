@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="vertical" data-layout-style="detached" data-sidebar="light" data-topbar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+<html lang="en" data-layout="vertical" data-layout-style="detached" data-sidebar="light" data-topbar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -66,11 +66,11 @@
                                     <p class="text-muted">Loguéate para continuar en L&R Operadores</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="index.html">
+                                    <form th:action="@{/login/guardar}" th:object="${login}" method="post">
 
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Usuario</label>
-                                            <input type="text" name="usuario" class="form-control" id="username" placeholder="Ingresa un usuario">
+                                            <input type="text" th:field="*{usuario}" name="usuario" class="form-control" id="username" placeholder="Ingresa un usuario">
                                         </div>
 
                                         <div class="mb-3">
@@ -79,7 +79,7 @@
                                             </div>
                                             <label class="form-label" for="clave-input">Clave</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="clave" name="clave" class="form-control pe-5 password-input" placeholder="Ingresa tu clave" id="password-input">
+                                                <input type="password" th:field="*{contraseña}" name="contraseña" class="form-control pe-5 password-input" placeholder="Ingresa tu clave" id="password-input">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>

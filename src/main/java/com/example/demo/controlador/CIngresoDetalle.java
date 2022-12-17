@@ -30,7 +30,7 @@ public class CIngresoDetalle {
 	public String nuevo(Model modelo) {
 		IngresoDetalle ingresodetalle = new IngresoDetalle();
 		modelo.addAttribute("ingresodetalle", ingresodetalle);
-		return "nuevoingresodetalle";
+		return "nuevoIngresoDetalle";
 	}
 
 	@PostMapping("/ingresodetalle/guardar")
