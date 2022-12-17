@@ -27,18 +27,10 @@ public class CLogin {
 		return "login";
 	}
 
-	@GetMapping("/login/nuevo")
-	public String nuevo(Model modelo) {
-		Login login = new Login();
-		modelo.addAttribute("login", login);
-
-		return "nuevoLogin";
-	}
-
 	@PostMapping("/login/guardar")
-	public String guardar(@PathVariable String usuario, @PathVariable String contraseña, @ModelAttribute Login login) {
-		Login user = dao.buscarUsuario(usuario, contraseña);
-		dao.guardar(user);
+	public String guardar(@ModelAttribute Login login) {
+		Login usuario = dao.buscarUsuario(login);
+		dao.guardar(usuario);
 		return "redirect:/";
 	}
 

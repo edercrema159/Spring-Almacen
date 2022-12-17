@@ -29,7 +29,7 @@ public class ReporteUsuario extends AbstractPdfView {
 
     @SuppressWarnings("unchecked")
     List<Usuario> listaUsuario = (List<Usuario>) model.get("listaUsuario");
-    PdfPTable tablaUsuario = new PdfPTable(7);
+    PdfPTable tablaUsuario = new PdfPTable(9);
     document.setPageSize(PageSize.A4.rotate());
     document.open();
     
@@ -42,7 +42,7 @@ public class ReporteUsuario extends AbstractPdfView {
     /* COLUMNAS */
     tablaUsuario.addCell(new Phrase("ID"));
     tablaUsuario.addCell(new Phrase("Usuario"));
-    tablaUsuario.addCell(new Phrase("Contraseña"));
+    // tablaUsuario.addCell(new Phrase("Contraseña"));
     tablaUsuario.addCell(new Phrase("Cargo"));
     tablaUsuario.addCell(new Phrase("Nombres"));
     tablaUsuario.addCell(new Phrase("Apellidos"));
@@ -54,7 +54,7 @@ public class ReporteUsuario extends AbstractPdfView {
     listaUsuario.forEach(Usuario -> {
       tablaUsuario.addCell(String.valueOf(Usuario.getIdUsuario()));
       tablaUsuario.addCell(Usuario.getUsuario());
-      tablaUsuario.addCell(String.valueOf(Usuario.getContraseña()));
+      // tablaUsuario.addCell(String.valueOf(Usuario.getContraseña()));
       tablaUsuario.addCell(String.valueOf(Usuario.getIdCargo()));
       tablaUsuario.addCell(Usuario.getNombres());
       tablaUsuario.addCell(Usuario.getApellidos());

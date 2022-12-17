@@ -27,14 +27,15 @@ public class LoginDao implements ILoginDao {
 		String sql = "INSERT INTO login (IdUsuario) values (?)";
 		return jdbctemplate.update(sql, login.getIdUsuario());
 	}
-
+	
 	@Override
 	public Login buscarUsuario(Login login) {
 		String sql = "SELECT idUsuario FROM usuario where Usuario = ? and contraseña = ? and estado=1 limit 1";
-		Login login = jdbctemplate.queryForObject(sql, new Object[] {
+		
+		Login log = jdbctemplate.queryForObject(sql, new Object[] {
 			login.getUsuario(), login.getContraseña() },
 				BeanPropertyRowMapper.newInstance(Login.class));
-		return login;
+		return log;
 	}
 
 	@Override

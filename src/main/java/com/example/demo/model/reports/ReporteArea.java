@@ -29,7 +29,7 @@ public class ReporteArea extends AbstractPdfView {
 
     @SuppressWarnings("unchecked")
     List<Area> listaArea = (List<Area>) model.get("listaArea");
-    PdfPTable tablaArea = new PdfPTable(7);
+    PdfPTable tablaArea = new PdfPTable(2);
     document.setPageSize(PageSize.A4.rotate());
     document.open();
     
