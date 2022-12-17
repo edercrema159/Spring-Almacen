@@ -29,7 +29,7 @@ public class ReporteIngreso extends AbstractPdfView {
 
     @SuppressWarnings("unchecked")
     List<Ingreso> listaIngreso = (List<Ingreso>) model.get("listaIngreso");
-    PdfPTable tablaIngreso = new PdfPTable(7);
+    PdfPTable tablaIngreso = new PdfPTable(5);
     document.setPageSize(PageSize.A4.rotate());
     document.open();
     
@@ -50,9 +50,9 @@ public class ReporteIngreso extends AbstractPdfView {
     listaIngreso.forEach(ingreso -> {
       tablaIngreso.addCell(String.valueOf(ingreso.getIdIngreso()));
       tablaIngreso.addCell(ingreso.getDocumento());
-      tablaIngreso.addCell(String.valueOf(ingreso.getIdProveedor()));
+      tablaIngreso.addCell(ingreso.getProveedor());
       tablaIngreso.addCell(ingreso.getFecha());
-      tablaIngreso.addCell(String.valueOf(ingreso.getIdAlmacen()));
+      tablaIngreso.addCell(ingreso.getAlmacen());
 
     });
     document.add(tablaIngreso);

@@ -139,6 +139,14 @@
 										<a href="nuevo" class="btn btn-info"><i class="ri-add-fill align-bottom"></i>
 											Nuevo</a>
 									</div>
+									<div class="flex-shrink-0">
+										<a th:href="@{/salida/(format=pdf)}" target="_blank" class="btn btn-warning"><i class="ri-file-pdf-fill align-bottom"></i>
+											Reporte</a>
+									</div>
+									<div class="flex-shrink-0">
+										<a href="/" class="btn btn-secondary"><i class="ri-home-3-fill align-bottom"></i>
+											Volver</a>
+									</div>
 								</div>
 								<div class="tab-content pt-4 text-muted">
 									<div class="tab-pane fade active show" id="activities" role="tabpanel">
@@ -153,24 +161,16 @@
 															<th scope="col">Proveedor</th>
 															<th scope="col">Fecha</th>
 															<th scope="col">Almacen</th>
-															<th scope="col">Id SalDet</th>
-															<th scope="col">Producto</th>
-															<th scope="col">Cantidad</th>
-															<th scope="col">Costo</th>
 															<th scope="col">Opciones</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr th:each="salida:${listaSalidaDetalle}">
+														<tr th:each="salida:${listaSalida}">
 															<td th:text="${salida.idSalida}"></td>
 															<td th:text="${salida.documento}"></td>
 															<td th:text="${salida.proveedor}"></td>
 															<td th:text="${salida.fecha}"></td>
 															<td th:text="${salida.almacen}"></td>
-															<td th:text="${salida.idSalidaDetalle}"></td>
-															<td th:text="${salida.producto}"></td>
-															<td th:text="${salida.cantidad}"></td>
-															<td th:text="${salida.costo}"></td>
 															<td>
 																<div class="hstack gap-3 fs-15">
 																	<a th:href="@{/salida/editar/{idSalida}(idSalida=${salida.idSalida})}"

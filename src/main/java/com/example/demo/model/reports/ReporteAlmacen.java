@@ -28,8 +28,8 @@ public class ReporteAlmacen extends AbstractPdfView {
       HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     @SuppressWarnings("unchecked")
-    List<Almacen> listaAlmacen = (List<Almacen>) model.get("listaAlmacenr");
-    PdfPTable tablaAlmacen = new PdfPTable(7);
+    List<Almacen> listaAlmacen = (List<Almacen>) model.get("listaAlmacen");
+    PdfPTable tablaAlmacen = new PdfPTable(3);
     document.setPageSize(PageSize.A4.rotate());
     document.open();
     

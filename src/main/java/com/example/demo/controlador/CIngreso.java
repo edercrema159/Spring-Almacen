@@ -30,6 +30,12 @@ public class CIngreso {
 	public String nuevo(Model modelo) {
 		Ingreso ingreso = new Ingreso();
 		modelo.addAttribute("ingreso", ingreso);
+
+		List<Ingreso> listaProveedor = dao.listarProveedor();
+		modelo.addAttribute("listaProveedor", listaProveedor);
+
+		List<Ingreso> listaAlmacen = dao.listarAlmacen();
+		modelo.addAttribute("listaAlmacen", listaAlmacen);
 		return "nuevoIngreso";
 	}
 

@@ -17,11 +17,23 @@ public class IngresoDao implements IIngresoDao {
 
 	@Override
 	public List<Ingreso> listar() {
-		String sql = "SELECT * FROM ingreso WHERE estado=1";
+		String sql = "SELECT i.*, a.descripcion as almacen, p.razonSocial as proveedor FROM ingreso i LEFT JOIN almacen a ON a.idAlmacen=i.idAlmacen LEFT JOIN proveedor p ON p.idProveedor=i.idProveedor WHERE i.estado=1";
 		List<Ingreso> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(Ingreso.class));
 		return lista;
 	}
 
+	@Override
+	public List<Ingreso> listarProveedor() {
+		String sql = "SELECT *, razonSocial as proveedor FROM proveedor WHERE estado=1";
+		List<Ingreso> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(Ingreso.class));
+		return lista;
+	}
+	@Override
+	public List<Ingreso> listarAlmacen() {
+		String sql = "SELECT *, descripcion as almacen FROM almacen WHERE estado=1";
+		List<Ingreso> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(Ingreso.class));
+		return lista;
+	}
 	@Override
 	public int guardar(Ingreso ingreso) {
 		String sql = "INSERT INTO ingreso (documento, idProveedor, fecha, idAlmacen) values (?,?,?,?)";

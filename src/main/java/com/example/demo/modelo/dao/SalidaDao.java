@@ -17,7 +17,7 @@ public class SalidaDao implements ISalidaDao {
 
 	@Override
 	public List<Salida> listar() {
-		String sql = "SELECT * FROM salida WHERE estado=1";
+		String sql = "SELECT s.*, p.razonSocial as proveedor, a.descripcion as almacen FROM salida s LEFT JOIN proveedor p on p.idProveedor=s.idProveedor LEFT JOIN almacen a on a.idAlmacen=s.idAlmacen WHERE s.estado=1";
 		List<Salida> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(Salida.class));
 		return lista;
 	}

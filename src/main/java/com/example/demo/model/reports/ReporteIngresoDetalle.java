@@ -20,7 +20,7 @@ import com.lowagie.text.pdf.PdfWriter;
 
 import com.example.demo.modelo.entidad.IngresoDetalle;
 
-@Component("listIngresoDetalle")
+@Component("listEntrada")
 public class ReporteIngresoDetalle extends AbstractPdfView {
 
   @Override
@@ -29,7 +29,7 @@ public class ReporteIngresoDetalle extends AbstractPdfView {
 
     @SuppressWarnings("unchecked")
     List<IngresoDetalle> listaIngresoDetalle = (List<IngresoDetalle>) model.get("listaIngresoDetalle");
-    PdfPTable tablaIngresoDetalle = new PdfPTable(7);
+    PdfPTable tablaIngresoDetalle = new PdfPTable(5);
     document.setPageSize(PageSize.A4.rotate());
     document.open();
     

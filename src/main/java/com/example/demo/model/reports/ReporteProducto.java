@@ -29,7 +29,7 @@ public class ReporteProducto extends AbstractPdfView {
 
     @SuppressWarnings("unchecked")
     List<Producto> listaProducto = (List<Producto>) model.get("listaProducto");
-    PdfPTable tablaProducto = new PdfPTable(7);
+    PdfPTable tablaProducto = new PdfPTable(4);
     document.setPageSize(PageSize.A4.rotate());
     document.open();
     

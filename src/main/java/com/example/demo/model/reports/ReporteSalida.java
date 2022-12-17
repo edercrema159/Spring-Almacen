@@ -29,7 +29,7 @@ public class ReporteSalida extends AbstractPdfView {
 
     @SuppressWarnings("unchecked")
     List<Salida> listaSalida = (List<Salida>) model.get("listaSalida");
-    PdfPTable tablaSalida = new PdfPTable(7);
+    PdfPTable tablaSalida = new PdfPTable(5);
     document.setPageSize(PageSize.A4.rotate());
     document.open();
     
@@ -51,9 +51,8 @@ public class ReporteSalida extends AbstractPdfView {
       tablaSalida.addCell(String.valueOf(salida.getIdSalida()));
       tablaSalida.addCell(salida.getDocumento());
       tablaSalida.addCell(salida.getFecha());
-      tablaSalida.addCell(String.valueOf(salida.getIdAlmacen()));
-      tablaSalida.addCell(String.valueOf(salida.getIdProveedor()));
-
+      tablaSalida.addCell(salida.getAlmacen());
+      tablaSalida.addCell(salida.getProveedor());
     });
     document.add(tablaSalida);
 

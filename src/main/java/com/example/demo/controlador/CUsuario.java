@@ -19,6 +19,12 @@ public class CUsuario {
 	@Autowired
 	private UsuarioDao dao;
 
+	@GetMapping("/")
+	public String index(Model modelo) {
+		// List<Usuario> lista = dao.listar();
+		// modelo.addAttribute("listaUsuario", lista);
+		return "index";
+	}
 	@GetMapping("/usuario")
 	public String listar(Model modelo) {
 		List<Usuario> lista = dao.listar();
