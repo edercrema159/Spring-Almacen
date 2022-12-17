@@ -20,7 +20,7 @@ import com.lowagie.text.pdf.PdfWriter;
 
 import com.example.demo.modelo.entidad.SalidaDetalle;
 
-@Component("listSalidaDetalle")
+@Component("listSalidaDet")
 public class ReporteSalidaDetalle extends AbstractPdfView {
 
   @Override
@@ -28,7 +28,7 @@ public class ReporteSalidaDetalle extends AbstractPdfView {
       HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     @SuppressWarnings("unchecked")
-    List<SalidaDetalle> listaSalidaDetalle = (List<SalidaDetalle>) model.get("listaSalidaDetaller");
+    List<SalidaDetalle> listaSalidaDetalle = (List<SalidaDetalle>) model.get("listaSalidaDet");
     PdfPTable tablaSalidaDetalle = new PdfPTable(7);
     document.setPageSize(PageSize.A4.rotate());
     document.open();

@@ -23,6 +23,20 @@ public class SalidaDao implements ISalidaDao {
 	}
 
 	@Override
+	public List<Salida> listarProveedor() {
+		String sql = "SELECT *, razonSocial as proveedor FROM proveedor WHERE estado=1";
+		List<Salida> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(Salida.class));
+		return lista;
+	}
+
+	@Override
+	public List<Salida> listarAlmacen() {
+		String sql = "SELECT *, descripcion as almacen FROM almacen WHERE estado=1";
+		List<Salida> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(Salida.class));
+		return lista;
+	}
+
+	@Override
 	public int guardar(Salida salida) {
 		String sql = "INSERT INTO salida (documento, fecha, idAlmacen, idProveedor) values (?,?,?,?)";
 		return jdbctemplate.update(sql, salida.getDocumento(), salida.getFecha(),

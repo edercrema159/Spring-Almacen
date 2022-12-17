@@ -157,6 +157,12 @@
 															<td th:text="${salida.almacen}"></td>
 															<td>
 																<div class="hstack gap-3 fs-15">
+																	<a th:href="@{/salidadetalle/{idSalida}(idSalida=${salida.idSalida})}"class="link-danger"><i
+																		class="ri-eye-fill"></i></a>
+
+																	<a th:href="@{/salidadetalle/nuevo/{idSalida}(idSalida=${salida.idSalida})}"class="link-danger"><i
+																		class="ri-add-circle-fill"></i></a>
+
 																	<a th:href="@{/salida/editar/{idSalida}(idSalida=${salida.idSalida})}"
 																		class="link-primary"><i class="ri-settings-4-line"></i></a>
 

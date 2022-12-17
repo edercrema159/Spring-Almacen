@@ -30,6 +30,12 @@ public class CSalida {
 	public String nuevo(Model modelo) {
 		Salida salida = new Salida();
 		modelo.addAttribute("salida", salida);
+
+		List<Salida> listaProveedor = dao.listarProveedor();
+		modelo.addAttribute("listaProveedor", listaProveedor);
+
+		List<Salida> listaAlmacen = dao.listarAlmacen();
+		modelo.addAttribute("listaAlmacen", listaAlmacen);
 		return "nuevoSalida";
 	}
 
@@ -43,6 +49,12 @@ public class CSalida {
 	public String editar(@PathVariable int idSalida, Model modelo) {
 		Salida salida= dao.buscarID(idSalida);
 		modelo.addAttribute("salida", salida);
+
+		List<Salida> listaProveedor = dao.listarProveedor();
+		modelo.addAttribute("listaProveedor", listaProveedor);
+
+		List<Salida> listaAlmacen = dao.listarAlmacen();
+		modelo.addAttribute("listaAlmacen", listaAlmacen);
 		return "editarSalida";
 	}
 

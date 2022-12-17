@@ -25,18 +25,30 @@ public class CSalidaDetalle {
 		modelo.addAttribute("listaSalidaDetalle", lista);
 		return "listSalidaDet";
 	}
+	@GetMapping("/salidadetalle/{idSalida}")
+	public String listar2(@PathVariable int idSalida, Model modelo) {
+		List<SalidaDetalle> lista = dao.listarFiltrado(idSalida);
+		modelo.addAttribute("listaSalidaDetalle", lista);
+		return "listSalidaDet";
+	}
 
-	@GetMapping("/salidadetalle/nuevo")
-	public String nuevo(Model modelo) {
+	@GetMapping("/salidadetalle/nuevo/{idSalida}")
+	public String nuevo(@PathVariable int idSalida, Model modelo) {
 		SalidaDetalle salidadetalle = new SalidaDetalle();
 		modelo.addAttribute("salidadetalle", salidadetalle);
+		SalidaDetalle id = dao.buscarIDSalida(idSalida);
+		modelo.addAttribute("idSalida", id);
+
+		
+		List<SalidaDetalle> listaProducto = dao.listarProducto();
+		modelo.addAttribute("listaProducto", listaProducto);
 		return "nuevoSalidaDetalle";
 	}
 
 	@PostMapping("/salidadetalle/guardar")
 	public String guardar(@ModelAttribute SalidaDetalle salidadetalle) {
 		dao.guardar(salidadetalle);
-		return "redirect:/salidadetalle";
+		return "redirect:/salida";
 	}
 
 	@GetMapping("/salidadetalle/editar/{idSalidaDetalle}")
@@ -49,12 +61,12 @@ public class CSalidaDetalle {
 	@PostMapping("/salidadetalle/actualizar")
 	public String actualizar(@ModelAttribute SalidaDetalle salidadetalle) {
 		dao.actualizar(salidadetalle);
-		return "redirect:/salidadetalle";
+		return "redirect:/salida";
 	}
 
 	@GetMapping("/salidadetalle/borrar/{idSalidaDetalle}")
 	public String borrar(@PathVariable int idSalidaDetalle) {
 		dao.borrar(idSalidaDetalle);
-		return "redirect:/salidadetalle";
+		return "redirect:/salida";
 	}
 }

@@ -7,13 +7,13 @@
 	<meta charset="utf-8" />
 	<title>L&R Operadores - Registro</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+	<link rel="shortcut icon" href="../../assets/images/favicon.ico">
 
-	<script src="../assets/js/layout.js"></script>
-	<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-	<link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" />
-	<link href="../assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+	<script src="../../assets/js/layout.js"></script>
+	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 
 </head>
@@ -27,18 +27,18 @@
 						<div class="navbar-brand-box horizontal-logo">
 							<a class="logo logo-dark">
 								<span class="logo-sm">
-									<img src="../assets/images/logo-sm.png" alt="" height="22">
+									<img src="../../assets/images/logo-sm.png" alt="" height="22">
 								</span>
 								<span class="logo-lg">
-									<img src="../assets/images/logo-dark.png" alt="" height="17">
+									<img src="../../assets/images/logo-dark.png" alt="" height="17">
 								</span>
 							</a>
 							<a class="logo logo-light">
 								<span class="logo-sm">
-									<img src="../assets/images/logo-sm.png" alt="" height="22">
+									<img src="../../assets/images/logo-sm.png" alt="" height="22">
 								</span>
 								<span class="logo-lg">
-									<img src="../assets/images/logo-light.png" alt="" height="17">
+									<img src="../../assets/images/logo-light.png" alt="" height="17">
 								</span>
 							</a>
 						</div>
@@ -61,9 +61,9 @@
 						<div class="col-xxl-12">
 							<div class="card">
 								<div class="card-body form-steps">
-									<form th:action="@{/salida/guardar}" th:object="${salida}" method="post">
+									<form th:action="@{/salidadetalle/guardar}" th:object="${salidadetalle}" method="post">
 										<div class="text-center pt-3 pb-4 mb-1">
-											<img src="../assets/images/descarga.png" alt="" height="200">
+											<img src="../../assets/images/descarga.png" alt="" height="200">
 										</div>
 										<div class="step-arrow-nav mb-4">
 											<ul class="nav nav-pills custom-nav nav-justified" role="tablist">
@@ -88,35 +88,29 @@
 														<div class="col-lg-3"></div>
 														<div class="col-lg-6">
 															<div class="col-lg-12 mb-3">
-																	<label for="firstNameinput" class="form-label">Id Nueva Salida</label>
-																	<select th:field="*{Id Nueva Salida}" class="form-control"
-																	id="choices-single-no-search" name="choices-single-no-search" data-choices
-																	data-choices-search-false data-choices-removeItem>
-																	<option th:each="productoCategoria:${listaProductoCategoria}"
-																		th:value="${productoCategoria.idNuevaSalida}"
-																		th:text="${productoCategoria.descripcion}"></option>
-																</select>
-															
+																<label for="firstNameinput" class="form-label">Id Nueva Salida</label>
+																<input type="text" th:field="${idSalida.idSalida}" class="form-control"
+																	placeholder="Cantidad" required>
+															</div>
 															<div class="col-lg-12 mb-3">
 																<label for="lastNameinput" class="form-label">Producto</label>
-																<select th:field="*{Producto}" class="form-control"
-																id="choices-single-no-search" name="choices-single-no-search" data-choices
-																data-choices-search-false data-choices-removeItem>
-																<option th:each="productoCategoria:${listaProductoCategoria}"
-																	th:value="${productoCategoria.Producto}"
-																	th:text="${productoCategoria.descripcion}"></option>
-															</select>
-														    </div>
+																<select th:field="*{idProducto}" class="form-control" id="choices-single-no-search"
+																	name="choices-single-no-search" data-choices data-choices-search-false
+																	data-choices-removeItem>
+																	<option th:each="producto:${listaProducto}" th:value="${producto.idProducto}"
+																		th:text="${producto.producto}"></option>
+																</select>
+															</div>
 															<div class="col-lg-12 mb-3">
 																<label for="compnayNameinput" class="form-label">Cantidad</label>
 																<input type="number" th:field="*{Cantidad}" class="form-control"
-																id="steparrow-gen-info-confirm-password-input" placeholder="Cantidad" required>
-														    </div>
+																	id="steparrow-gen-info-confirm-password-input" placeholder="Cantidad" required>
+															</div>
 															<div class="col-lg-12 mb-3">
 																<label for="compnayNameinput" class="form-label">Costo</label>
 																<input type="number" th:field="*{Costo}" class="form-control"
-																id="steparrow-gen-info-confirm-password-input" placeholder="Costo" required>
-														    </div>
+																	id="steparrow-gen-info-confirm-password-input" placeholder="Costo" required>
+															</div>
 															<div class="d-flex align-items-start gap-3 mt-4">
 																<button type="submit" class="btn btn-success btn-label right ms-auto nexttab nexttab"
 																	data-nexttab="steparrow-description-info-tab"><i
@@ -128,7 +122,7 @@
 													</div>
 
 												</div>
-												
+
 											</div>
 
 											<div class="tab-pane fade" id="pills-experience" role="tabpanel"
@@ -141,8 +135,9 @@
 														</lord-icon>
 													</div>
 													<h5>¡Llenar los campos de texto!</h5>
-													<p class="text-muted">Para <b>REGISTRAR</b> una nueva <b>DETALLE DE SALIDA</b> solo tiene que llenar los campos y posteriormente presionar el boton de "<b>Registrar
-														Detalle de Salida</b>"</p>
+													<p class="text-muted">Para <b>REGISTRAR</b> una nueva <b>DETALLE DE SALIDA</b> solo tiene que
+														llenar los campos y posteriormente presionar el boton de "<b>Registrar
+															Detalle de Salida</b>"</p>
 												</div>
 											</div>
 										</div>
@@ -173,20 +168,20 @@
 		</div>
 
 	</div>
-	<script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="../assets/libs/simplebar/simplebar.min.js"></script>
-	<script src="../assets/libs/node-waves/waves.min.js"></script>
-	<script src="../assets/libs/feather-icons/feather.min.js"></script>
-	<script src="../assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-	<script src="../assets/js/plugins.js"></script>
+	<script src="../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../assets/libs/simplebar/simplebar.min.js"></script>
+	<script src="../../assets/libs/node-waves/waves.min.js"></script>
+	<script src="../../assets/libs/feather-icons/feather.min.js"></script>
+	<script src="../../assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+	<script src="../../assets/js/plugins.js"></script>
 
 
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-	<script type="text/javascript" src="../assets/libs/choices.js/public/../assets/scripts/choices.min.js"></script>
-	<script type="text/javascript" src="../assets/libs/flatpickr/flatpickr.min.js"></script>
-	<script src="../assets/libs/prismjs/prism.js"></script>
-	<script src="../assets/js/pages/form-wizard.init.js"></script>
-	<script src="../assets/js/app.js"></script>
+	<script type="text/javascript" src="../../assets/libs/choices.js/public/../../assets/scripts/choices.min.js"></script>
+	<script type="text/javascript" src="../../assets/libs/flatpickr/flatpickr.min.js"></script>
+	<script src="../../assets/libs/prismjs/prism.js"></script>
+	<script src="../../assets/js/pages/form-wizard.init.js"></script>
+	<script src="../../assets/js/app.js"></script>
 </body>
 
 </html>

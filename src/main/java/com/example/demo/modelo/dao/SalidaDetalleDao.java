@@ -27,6 +27,25 @@ public class SalidaDetalleDao implements ISalidaDetalleDao {
 		List<SalidaDetalle> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(SalidaDetalle.class));
 		return lista;
 	}
+	@Override
+	public List<SalidaDetalle> listarFiltrado(int idSalida) {
+		String sql = "SELECT sd.*, s.documento, s.fecha, p.razonSocial as proveedor, a.descripcion as almacen, pr.descripcion as producto "+
+		"FROM salidadetalle sd "+
+		"LEFT JOIN salida s ON s.idSalida = sd.idSalida "+
+		"LEFT JOIN proveedor p ON p.idProveedor=s.idProveedor "+
+		"LEFT JOIN almacen a ON a.idAlmacen=s.idAlmacen "+
+		"LEFT JOIN producto pr ON pr.idProducto=sd.idProducto "+
+		"WHERE sd.estado=1 and sd.idSalida = ? order by sd.idSalida, sd.idSalidaDetalle";
+		List<SalidaDetalle> lista = jdbctemplate.query(sql, new Object[]{idSalida}, BeanPropertyRowMapper.newInstance(SalidaDetalle.class));
+		return lista;
+	}
+
+	@Override
+	public List<SalidaDetalle> listarProducto() {
+		String sql = "SELECT *, descripcion as producto FROM producto WHERE estado=1";
+		List<SalidaDetalle> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(SalidaDetalle.class));
+		return lista;
+	}
 
 	@Override
 	public int guardar(SalidaDetalle salida) {
@@ -42,7 +61,14 @@ public class SalidaDetalleDao implements ISalidaDetalleDao {
 				BeanPropertyRowMapper.newInstance(SalidaDetalle.class));
 		return salidadetalle;
 	}
-
+	@Override
+	public SalidaDetalle buscarIDSalida(int idSalida) {
+		String sql = "SELECT * FROM salida where idSalida = ?";
+		SalidaDetalle salidadetalle = jdbctemplate.queryForObject(sql, new Object[] {
+				idSalida },
+				BeanPropertyRowMapper.newInstance(SalidaDetalle.class));
+		return salidadetalle;
+	}
 	@Override
 	public int actualizar(SalidaDetalle salidadetalle) {
 		String sql = "UPDATE salidadetalle set idSalida=?, idProducto=?, cantidad=?, costo=?  WHERE idSalidaDetalle = ?";

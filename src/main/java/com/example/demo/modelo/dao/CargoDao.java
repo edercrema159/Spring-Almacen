@@ -45,7 +45,7 @@ public class CargoDao implements ICargoDao {
 
 	@Override
 	public int borrar(int idCargo) {
-		String sql = "UPDATE area set estado=0 where idArea=?";
+		String sql = "UPDATE cargo set estado=0 where idCargo=?";
 		return jdbctemplate.update(sql, idCargo);
 	}
 }
