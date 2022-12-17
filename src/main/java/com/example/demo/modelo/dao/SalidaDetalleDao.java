@@ -55,7 +55,7 @@ public class SalidaDetalleDao implements ISalidaDetalleDao {
 
 	@Override
 	public SalidaDetalle buscarID(int idSalidaDetalle) {
-		String sql = "SELECT * FROM salidadetalle where idSalida = ?";
+		String sql = "SELECT * FROM salidadetalle where idSalidaDetalle = ?";
 		SalidaDetalle salidadetalle = jdbctemplate.queryForObject(sql, new Object[] {
 				idSalidaDetalle },
 				BeanPropertyRowMapper.newInstance(SalidaDetalle.class));
@@ -71,9 +71,9 @@ public class SalidaDetalleDao implements ISalidaDetalleDao {
 	}
 	@Override
 	public int actualizar(SalidaDetalle salidadetalle) {
-		String sql = "UPDATE salidadetalle set idSalida=?, idProducto=?, cantidad=?, costo=?  WHERE idSalidaDetalle = ?";
-		return jdbctemplate.update(sql, salidadetalle.getIdSalida(), salidadetalle.getIdProducto(), salidadetalle.getCantidad(),
-				salidadetalle.getCantidad(), salidadetalle.getIdSalidaDetalle());
+		String sql = "UPDATE salidadetalle set idProducto=?, cantidad=?, costo=?  WHERE idSalidaDetalle = ?";
+		return jdbctemplate.update(sql, salidadetalle.getIdProducto(), salidadetalle.getCantidad(),
+				salidadetalle.getCosto(), salidadetalle.getIdSalidaDetalle());
 	}
 
 	@Override

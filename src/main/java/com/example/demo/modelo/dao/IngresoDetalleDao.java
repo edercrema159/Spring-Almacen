@@ -55,12 +55,12 @@ public class IngresoDetalleDao implements IIngresoDetalleDao {
 	public int guardar(IngresoDetalle ingresodetalle) {
 		String sql = "INSERT INTO ingresodetalle (idIngreso, idProducto, cantidad, costo) values (?,?,?,?)";
 		return jdbctemplate.update(sql, ingresodetalle.getIdIngreso(), ingresodetalle.getIdProducto(),
-				ingresodetalle.getCosto(), ingresodetalle.getCosto());
+				ingresodetalle.getCantidad(), ingresodetalle.getCosto());
 	}
 
 	@Override
 	public IngresoDetalle buscarID(int idIngresoDetalle) {
-		String sql = "SELECT * FROM ingreso where idIngresoDetalle = ?";
+		String sql = "SELECT * FROM ingresodetalle where idIngresoDetalle = ?";
 		IngresoDetalle ingresodetalle = jdbctemplate.queryForObject(sql, new Object[] {
 				idIngresoDetalle },
 				BeanPropertyRowMapper.newInstance(IngresoDetalle.class));
@@ -77,14 +77,14 @@ public class IngresoDetalleDao implements IIngresoDetalleDao {
 	}
 	@Override
 	public int actualizar(IngresoDetalle ingresodetalle) {
-		String sql = "UPDATE ingresodetalle set idIngreso=?, idProducto=?, cantidad=?, costo=? where idIngresoDetalle=?";
-		return jdbctemplate.update(sql, ingresodetalle.getIdIngreso(), ingresodetalle.getIdProducto(),
+		String sql = "UPDATE ingresodetalle set idProducto=?, cantidad=?, costo=? where idIngresoDetalle=?";
+		return jdbctemplate.update(sql, ingresodetalle.getIdProducto(),
 				ingresodetalle.getCantidad(), ingresodetalle.getCosto(), ingresodetalle.getIdIngresoDetalle());
 	}
 
 	@Override
 	public int borrar(int idIngresoDetalle) {
-		String sql = "UPDATE ingresodetalle set estado=0 where idIngreso=?";
+		String sql = "UPDATE ingresodetalle set estado=0 where idIngresoDetalle=?";
 		return jdbctemplate.update(sql, idIngresoDetalle);
 	}
 }

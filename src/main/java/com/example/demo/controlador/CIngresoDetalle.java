@@ -57,6 +57,11 @@ public class CIngresoDetalle {
 	public String editar(@PathVariable int idIngresoDetalle, Model modelo) {
 		IngresoDetalle ingresodetalle = dao.buscarID(idIngresoDetalle);
 		modelo.addAttribute("ingresodetalle", ingresodetalle);
+
+		
+		List<IngresoDetalle> listaProducto = dao.listarProducto();
+		modelo.addAttribute("listaProducto", listaProducto);
+		
 		return "editaringresodetalle";
 	}
 

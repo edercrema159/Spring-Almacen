@@ -29,7 +29,7 @@ public class ReporteCargo extends AbstractPdfView {
 
     @SuppressWarnings("unchecked")
     List<Cargo> listaCargo = (List<Cargo>) model.get("listaCargo");
-    PdfPTable tablaCargo = new PdfPTable(7);
+    PdfPTable tablaCargo = new PdfPTable(2);
     document.setPageSize(PageSize.A4.rotate());
     document.open();
     

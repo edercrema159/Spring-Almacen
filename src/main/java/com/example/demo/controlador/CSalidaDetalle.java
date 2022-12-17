@@ -55,6 +55,9 @@ public class CSalidaDetalle {
 	public String editar(@PathVariable int idSalidaDetalle, Model modelo) {
 		SalidaDetalle salidadetalle = dao.buscarID(idSalidaDetalle);
 		modelo.addAttribute("salidadetalle", salidadetalle);
+		
+		List<SalidaDetalle> listaProducto = dao.listarProducto();
+		modelo.addAttribute("listaProducto", listaProducto);
 		return "editarSalidaDetalle";
 	}
 
