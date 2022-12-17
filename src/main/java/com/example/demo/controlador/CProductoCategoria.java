@@ -36,7 +36,7 @@ public class CProductoCategoria {
 	@PostMapping("/productocategoria/guardar")
 	public String guardar(@ModelAttribute ProductoCategoria productocategoria) {
 		dao.guardar(productocategoria);
-		return "redirect:/productocategoria/";
+		return "redirect:/productocategoria";
 	}
 
 	@GetMapping("/productocategoria/editar/{idProductoCategoria}")
@@ -49,12 +49,12 @@ public class CProductoCategoria {
 	@PostMapping("/productocategoria/actualizar")
 	public String actualizar(@ModelAttribute ProductoCategoria productocategoria) {
 		dao.actualizar(productocategoria);
-		return "redirect:/productocategoria/";
+		return "redirect:/productocategoria";
 	}
 
 	@GetMapping("/productocategoria/borrar/{idProductoCategoria}")
 	public String borrar(@PathVariable int idProductoCategoria) {
 		dao.borrar(idProductoCategoria);
-		return "redirect:/productocategoria/";
+		return "redirect:/productocategoria";
 	}
 }

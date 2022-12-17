@@ -36,7 +36,7 @@ public class CSalidaDetalle {
 	@PostMapping("/salidadetalle/guardar")
 	public String guardar(@ModelAttribute SalidaDetalle salidadetalle) {
 		dao.guardar(salidadetalle);
-		return "redirect:/salidadetalle/";
+		return "redirect:/salidadetalle";
 	}
 
 	@GetMapping("/salidadetalle/editar/{idSalidaDetalle}")
@@ -49,12 +49,12 @@ public class CSalidaDetalle {
 	@PostMapping("/salidadetalle/actualizar")
 	public String actualizar(@ModelAttribute SalidaDetalle salidadetalle) {
 		dao.actualizar(salidadetalle);
-		return "redirect:/salidadetalle/";
+		return "redirect:/salidadetalle";
 	}
 
 	@GetMapping("/salidadetalle/borrar/{idSalidaDetalle}")
 	public String borrar(@PathVariable int idSalidaDetalle) {
 		dao.borrar(idSalidaDetalle);
-		return "redirect:/salidadetalle/";
+		return "redirect:/salidadetalle";
 	}
 }

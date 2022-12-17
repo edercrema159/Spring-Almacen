@@ -39,7 +39,7 @@ public class CProducto {
 	@PostMapping("/producto/guardar")
 	public String guardar(@ModelAttribute Producto producto) {
 		dao.guardar(producto);
-		return "redirect:/producto/";
+		return "redirect:/producto";
 	}
 
 	@GetMapping("/producto/editar/{idProducto}")
@@ -55,12 +55,12 @@ public class CProducto {
 	@PostMapping("/producto/actualizar")
 	public String actualizar(@ModelAttribute Producto producto) {
 		dao.actualizar(producto);
-		return "redirect:/producto/";
+		return "redirect:/producto";
 	}
 
 	@GetMapping("/producto/borrar/{idProducto}")
 	public String borrar(@PathVariable int idProducto) {
 		dao.borrar(idProducto);
-		return "redirect:/producto/";
+		return "redirect:/producto";
 	}
 }

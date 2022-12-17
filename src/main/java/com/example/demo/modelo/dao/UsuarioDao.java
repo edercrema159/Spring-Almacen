@@ -23,6 +23,13 @@ public class UsuarioDao implements IUsuarioDao {
 	}
 
 	@Override
+	public List<Usuario> listarCargo() {
+		String sql = "SELECT *, descripcion as cargo FROM cargo WHERE estado=1";
+		List<Usuario> lista = jdbctemplate.query(sql, BeanPropertyRowMapper.newInstance(Usuario.class));
+		return lista;
+	}
+
+	@Override
 	public int guardar(Usuario usuario) {
 		String sql = "INSERT INTO usuario (Usuario, contraseña, idCargo, nombres, apellidos, documento, telefono, correo) values (?,?,?,?,?,?,?,?)";
 		return jdbctemplate.update(sql, usuario.getUsuario(), usuario.getContraseña(),

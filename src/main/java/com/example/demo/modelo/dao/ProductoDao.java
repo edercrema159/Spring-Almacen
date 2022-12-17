@@ -45,8 +45,8 @@ public class ProductoDao implements IProductoDao {
 
 	@Override
 	public int actualizar(Producto producto) {
-		String sql = "UPDATE producto set descripcion=?, idProductoCategoria=? WHERE idProducto = ?";
-		return jdbctemplate.update(sql, producto.getDescripcion(), producto.getIdProductoCategoria(),
+		String sql = "UPDATE producto set descripcion=?, idProductoCategoria=?, cantidad=? WHERE idProducto = ?";
+		return jdbctemplate.update(sql, producto.getDescripcion(), producto.getIdProductoCategoria(), producto.getCantidad(),
 				producto.getIdProducto());
 	}
 

@@ -36,7 +36,7 @@ public class CCargo {
 	@PostMapping("/cargo/guardar")
 	public String guardar(@ModelAttribute Cargo cargo) {
 		dao.guardar(cargo);
-		return "redirect:/cargo/";
+		return "redirect:/cargo";
 	}
 
 	@GetMapping("/cargo/editar/{idCargo}")
@@ -49,12 +49,12 @@ public class CCargo {
 	@PostMapping("/cargo/actualizar")
 	public String actualizar(@ModelAttribute Cargo cargo) {
 		dao.actualizar(cargo);
-		return "redirect:/cargo/";
+		return "redirect:/cargo";
 	}
 
 	@GetMapping("/cargo/borrar/{idCargo}")
 	public String borrar(@PathVariable int idCargo) {
 		dao.borrar(idCargo);
-		return "redirect:/cargo/";
+		return "redirect:/cargo";
 	}
 }

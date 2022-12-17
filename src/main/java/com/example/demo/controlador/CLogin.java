@@ -37,12 +37,12 @@ public class CLogin {
 	@PostMapping("/login/actualizar")
 	public String actualizar(@ModelAttribute Login login) {
 		dao.actualizar(login);
-		return "redirect:/login/";
+		return "redirect:/login";
 	}
 
 	@GetMapping("/login/borrar/{idLogin}")
 	public String borrar(@PathVariable int idLogin) {
 		dao.borrar(idLogin);
-		return "redirect:/login/";
+		return "redirect:/login";
 	}
 }

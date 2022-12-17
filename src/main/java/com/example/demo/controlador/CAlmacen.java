@@ -40,7 +40,7 @@ public class CAlmacen {
 	@PostMapping("/almacen/guardar")
 	public String guardar(@ModelAttribute Almacen almacen) {
 		dao.guardar(almacen);
-		return "redirect:/almacen/";
+		return "redirect:/almacen";
 	}
 
 	@GetMapping("/almacen/editar/{idAlmacen}")
@@ -56,12 +56,12 @@ public class CAlmacen {
 	@PostMapping("/almacen/actualizar")
 	public String actualizar(@ModelAttribute Almacen almacen) {
 		dao.actualizar(almacen);
-		return "redirect:/almacen/";
+		return "redirect:/almacen";
 	}
 
 	@GetMapping("/almacen/borrar/{idAlmacen}")
 	public String borrar(@PathVariable int idAlmacen) {
 		dao.borrar(idAlmacen);
-		return "redirect:/almacen/";
+		return "redirect:/almacen";
 	}
 }

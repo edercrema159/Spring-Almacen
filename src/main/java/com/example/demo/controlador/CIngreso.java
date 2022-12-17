@@ -42,25 +42,31 @@ public class CIngreso {
 	@PostMapping("/ingreso/guardar")
 	public String guardar(@ModelAttribute Ingreso ingreso) {
 		dao.guardar(ingreso);
-		return "redirect:/ingreso/";
+		return "redirect:/ingreso";
 	}
 
 	@GetMapping("/ingreso/editar/{idIngreso}")
 	public String editar(@PathVariable int idIngreso, Model modelo) {
 		Ingreso ingreso = dao.buscarID(idIngreso);
 		modelo.addAttribute("ingreso", ingreso);
+
+		List<Ingreso> listaProveedor = dao.listarProveedor();
+		modelo.addAttribute("listaProveedor", listaProveedor);
+
+		List<Ingreso> listaAlmacen = dao.listarAlmacen();
+		modelo.addAttribute("listaAlmacen", listaAlmacen);
 		return "editarIngreso";
 	}
 
 	@PostMapping("/ingreso/actualizar")
 	public String actualizar(@ModelAttribute Ingreso ingreso) {
 		dao.actualizar(ingreso);
-		return "redirect:/ingreso/";
+		return "redirect:/ingreso";
 	}
 
 	@GetMapping("/ingreso/borrar/{idIngreso}")
 	public String borrar(@PathVariable int idIngreso) {
 		dao.borrar(idIngreso);
-		return "redirect:/ingreso/";
+		return "redirect:/ingreso";
 	}
 }

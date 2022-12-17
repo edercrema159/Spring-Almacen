@@ -24,13 +24,13 @@ public class CargoDao implements ICargoDao {
 
 	@Override
 	public int guardar(Cargo cargo) {
-		String sql = "INSERT INTO cargo (descripcion, estado) values (?,1)";
-		return jdbctemplate.update(sql, cargo.getDescripcion(), cargo.getEstado());
+		String sql = "INSERT INTO cargo (descripcion) values (?)";
+		return jdbctemplate.update(sql, cargo.getDescripcion());
 	}
 
 	@Override
 	public Cargo buscarID(int idCargo) {
-		String sql = "SELECT * FROM cargo where idArea = ?";
+		String sql = "SELECT * FROM cargo where idCargo = ?";
 		Cargo cargo = jdbctemplate.queryForObject(sql, new Object[] {
 				idCargo },
 				BeanPropertyRowMapper.newInstance(Cargo.class));

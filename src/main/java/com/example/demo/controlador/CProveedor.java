@@ -36,7 +36,7 @@ public class CProveedor {
 	@PostMapping("/proveedor/guardar")
 	public String guardar(@ModelAttribute Proveedor proveedor) {
 		dao.guardar(proveedor);
-		return "redirect:/proveedor/";
+		return "redirect:/proveedor";
 	}
 
 	@GetMapping("/proveedor/editar/{idProveedor}")
@@ -49,12 +49,12 @@ public class CProveedor {
 	@PostMapping("/proveedor/actualizar")
 	public String actualizar(@ModelAttribute Proveedor proveedor) {
 		dao.actualizar(proveedor);
-		return "redirect:/proveedor/";
+		return "redirect:/proveedor";
 	}
 
 	@GetMapping("/proveedor/borrar/{idProveedor}")
 	public String borrar(@PathVariable int idProveedor) {
 		dao.borrar(idProveedor);
-		return "redirect:/proveedor/";
+		return "redirect:/proveedor";
 	}
 }

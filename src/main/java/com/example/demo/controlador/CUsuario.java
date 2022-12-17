@@ -36,31 +36,37 @@ public class CUsuario {
 	public String nuevo(Model modelo) {
 		Usuario usuario = new Usuario();
 		modelo.addAttribute("usuario", usuario);
+		
+		List<Usuario> listaCargo = dao.listarCargo();
+		modelo.addAttribute("listaCargo", listaCargo);
 		return "nuevoUsuario";
 	}
 
 	@PostMapping("/usuario/guardar")
 	public String guardar(@ModelAttribute Usuario usuario) {
 		dao.guardar(usuario);
-		return "redirect:/usuario/";
+		return "redirect:/usuario";
 	}
 
 	@GetMapping("/usuario/editar/{idUsuario}")
 	public String editar(@PathVariable int idUsuario, Model modelo) {
 		Usuario usuario = dao.buscarID(idUsuario);
 		modelo.addAttribute("usuario", usuario);
+		
+		List<Usuario> listaCargo = dao.listarCargo();
+		modelo.addAttribute("listaCargo", listaCargo);
 		return "editarUsuario";
 	}
 
 	@PostMapping("/usuario/actualizar")
 	public String actualizar(@ModelAttribute Usuario usuario) {
 		dao.actualizar(usuario);
-		return "redirect:/usuario/";
+		return "redirect:/usuario";
 	}
 
 	@GetMapping("/usuario/borrar/{idUsuario}")
 	public String borrar(@PathVariable int idUsuario) {
 		dao.borrar(idUsuario);
-		return "redirect:/usuario/";
+		return "redirect:/usuario";
 	}
 }

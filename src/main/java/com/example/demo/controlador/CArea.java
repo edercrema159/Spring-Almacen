@@ -36,7 +36,7 @@ public class CArea {
 	@PostMapping("/area/guardar")
 	public String guardar(@ModelAttribute Area area) {
 		dao.guardar(area);
-		return "redirect:/area/";
+		return "redirect:/area";
 	}
 
 	@GetMapping("/area/editar/{idArea}")
@@ -49,12 +49,12 @@ public class CArea {
 	@PostMapping("/area/actualizar")
 	public String actualizar(@ModelAttribute Area area) {
 		dao.actualizar(area);
-		return "redirect:/area/";
+		return "redirect:/area";
 	}
 
 	@GetMapping("/area/borrar/{idArea}")
 	public String borrar(@PathVariable int idArea) {
 		dao.borrar(idArea);
-		return "redirect:/area/";
+		return "redirect:/area";
 	}
 }
